@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KSA Loan Origination Market Analysis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root { --manafa: #00a59a; --ink: #212529; }
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif; color: var(--ink); }
+    .nav-link { border-bottom: 2px solid transparent; transition: color .2s ease, border-bottom-color .2s ease; }
+    .nav-link:hover, .nav-link[aria-current="true"] { color: var(--manafa); border-bottom-color: var(--manafa); }
+    .card { background-color: #fff; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05); transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -2px rgb(0 0 0 / 0.07); }
+    .timeline-dot { position: absolute; left: -31px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 9999px; background-color: var(--manafa); border: 4px solid #f8f9fa; }
+    .chart-container { position: relative; width: 100%; max-width: 560px; height: 340px; margin-left: auto; margin-right: auto; }
+    @media (min-width: 768px) { .chart-container { height: 370px; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  </style>
+</head>
+<body class="antialiased bg-slate-50">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
+
+  <header class="bg-white/80 backdrop-blur sticky top-0 z-50 shadow-sm">
+    <nav class="mx-auto max-w-7xl px-6 py-4 flex justify-between items-center" aria-label="Primary">
+      <h1 class="text-2xl font-bold text-gray-800">KSA LOP Analysis</h1>
+      <ul class="hidden md:flex gap-6 text-sm font-medium">
+        <li><a href="#solution" class="nav-link py-1">Solution</a></li>
+        <li><a href="#market" class="nav-link py-1">Market</a></li>
+        <li><a href="#financials" class="nav-link py-1">Financials</a></li>
+        <li><a href="#competition" class="nav-link py-1">Competition</a></li>
+        <li><a href="#advantages" class="nav-link py-1">Advantages</a></li>
+        <li><a href="#findings" class="nav-link py-1">Findings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="mx-auto max-w-7xl px-6 py-12">
+    <!-- Solution -->
+    <section id="solution" class="mb-24 scroll-mt-24" aria-labelledby="solution-title">
+      <div class="text-center">
+        <h2 id="solution-title" class="text-4xl font-bold mb-4 text-gray-800">The Proposed Solution</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Our Loan Origination Platform automates the lending lifecycle from initial contact to post-loan monitoring.</p>
+      </div>
+
+      <div class="mx-auto max-w-3xl relative">
+        <div class="absolute left-[-21px] h-full border-l-2 border-dashed border-gray-300" aria-hidden="true"></div>
+        <div id="timeline" class="space-y-8"></div>
+      </div>
+    </section>
+
+    <hr class="my-24 border-gray-200" />
+
+    <!-- Market -->
+    <section id="market" class="mb-24 scroll-mt-24" aria-labelledby="market-title">
+      <div class="text-center">
+        <h2 id="market-title" class="text-4xl font-bold mb-4 text-gray-800">Potential Market Segments</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Key categories of potential clients for a modern Loan Origination Platform.</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div class="card p-6 flex items-center justify-center min-h-[100px]"><h3 class="text-lg font-semibold text-center">Government Funds</h3></div>
+        <div class="card p-6 flex items-center justify-center min-h-[100px]"><h3 class="text-lg font-semibold text-center">Finance Companies</h3></div>
+        <div class="card p-6 flex items-center justify-center min-h-[100px]"><h3 class="text-lg font-semibold text-center">CMA‑Licensed Direct‑Lending Funds</h3></div>
+        <div class="card p-6 flex items-center justify-center min-h-[100px]"><h3 class="text-lg font-semibold text-center">Banks</h3></div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div class="card p-6 text-center" role="group" aria-label="Private Credit Size">
+          <h3 class="text-base font-medium text-gray-600 mb-1">Private Credit Size</h3>
+          <p class="text-4xl font-bold text-gray-800">2.2&nbsp;Tr <span class="text-2xl font-medium text-gray-500">SAR</span></p>
+        </div>
+        <div class="card p-6 text-center" role="group" aria-label="Number of Entities">
+          <h3 class="text-base font-medium text-gray-600 mb-1">Number of Entities (lenders)</h3>
+          <p class="text-4xl font-bold text-gray-800">149</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-24 border-gray-200" />
+
+    <!-- Financials -->
+    <section id="financials" class="mb-24 scroll-mt-24" aria-labelledby="financials-title">
+      <div class="text-center">
+        <h2 id="financials-title" class="text-4xl font-bold mb-4 text-gray-800">Interactive Financial Projections</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Adjust the sliders to see how key drivers affect first‑year and recurring revenue.</p>
+      </div>
+
+      <div class="card p-8 mx-auto max-w-5xl">
+        <form class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 mb-8" aria-describedby="drivers-help" onsubmit="return false;">
+          <p id="drivers-help" class="sr-only">Use range sliders to change assumptions.</p>
+
+          <label class="block" for="clientsSlider">Number of Clients: <span id="clientsCount" class="font-bold text-[color:var(--manafa)]">5</span>
+            <input id="clientsSlider" type="range" min="1" max="10" value="5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block" for="baseLicenseSlider">Base License Fee: <span id="baseLicenseValue" class="font-bold text-[color:var(--manafa)]">2,000,000</span> SAR
+            <input id="baseLicenseSlider" type="range" min="1000000" max="5000000" step="100000" value="2000000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block" for="adminFeeSlider">Per Admin User Fee: <span id="adminFeeValue" class="font-bold text-[color:var(--manafa)]">30,000</span> SAR
+            <input id="adminFeeSlider" type="range" min="0" max="50000" step="1000" value="30000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block" for="subscriptionSlider">Subscription Rate: <span id="subscriptionValue" class="font-bold text-[color:var(--manafa)]">20</span>%
+            <input id="subscriptionSlider" type="range" min="10" max="30" step="1" value="20" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block" for="adminUsersSlider">Extra Number of Admin Users: <span id="adminUsersValue" class="font-bold text-[color:var(--manafa)]">20</span>
+            <input id="adminUsersSlider" type="range" min="5" max="50" step="1" value="20" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block" for="apiFeeSlider">API Fee: <span id="apiFeeValue" class="font-bold text-[color:var(--manafa)]">100,000</span> SAR
+            <input id="apiFeeSlider" type="range" min="0" max="200000" step="10000" value="100000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+
+          <label class="block md:col-span-2 lg:col-span-1" for="customizationFeeSlider">Recurring Customization: <span id="customizationFeeValue" class="font-bold text-[color:var(--manafa)]">1,000,000</span> SAR
+            <input id="customizationFeeSlider" type="range" min="0" max="2000000" step="100000" value="1000000" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer" />
+          </label>
+        </form>
+
+        <div class="grid md:grid-cols-2 gap-6 text-center bg-gray-50 p-6 rounded-lg">
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Total First Year Revenue</h3>
+            <p class="text-3xl font-bold"><span id="firstYearRevenue">23.25</span><span aria-hidden="true">M SAR</span><span class="sr-only"> million Saudi riyals</span></p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-1">Total Annual Recurring Revenue</h3>
+            <p class="text-3xl font-bold"><span id="recurringRevenue">10.50</span><span aria-hidden="true">M SAR</span><span class="sr-only"> million Saudi riyals</span></p>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <div class="chart-container">
+            <canvas id="revenueChart" aria-label="Revenue breakdown chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-24 border-gray-200" />
+
+    <!-- Competition -->
+    <section id="competition" class="mb-24 scroll-mt-24" aria-labelledby="competition-title">
+      <div class="text-center">
+        <h2 id="competition-title" class="text-4xl font-bold mb-4 text-gray-800">Competitive Landscape</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Established global players and new local entrants—note many provide broader financial platforms beyond origination.</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full max-w-4xl mx-auto card text-left" role="table">
+          <thead class="bg-gray-50" role="rowgroup">
+            <tr role="row">
+              <th scope="col" class="p-4 font-semibold">Competitor</th>
+              <th scope="col" class="p-4 font-semibold">Founded</th>
+              <th scope="col" class="p-4 font-semibold">HQ</th>
+              <th scope="col" class="p-4 font-semibold">Notes</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200" role="rowgroup">
+            <tr role="row">
+              <th scope="row" class="p-4 font-medium">Finastra</th>
+              <td class="p-4">1970</td>
+              <td class="p-4">UK</td>
+              <td class="p-4">Global player with a comprehensive platform ("Essence"). Proven KSA presence (ADF).</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" class="p-4 font-medium">Stitch</th>
+              <td class="p-4">2023</td>
+              <td class="p-4">KSA</td>
+              <td class="p-4">Local entrant backed by Raya Capital & Tanmya Capital.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <hr class="my-24 border-gray-200" />
+
+    <!-- Advantages -->
+    <section id="advantages" class="mb-24 scroll-mt-24" aria-labelledby="advantages-title">
+      <div class="text-center">
+        <h2 id="advantages-title" class="text-4xl font-bold mb-4 text-gray-800">Key Advantages</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Speed‑to‑market from a ready product and ready team.</p>
+      </div>
+
+      <div class="mx-auto max-w-2xl grid md:grid-cols-2 gap-6">
+        <div class="card p-8 text-center">
+          <h3 class="text-2xl font-bold mb-2">Ready Product</h3>
+          <p class="text-gray-600">Fully developed and tested; deployable immediately.</p>
+        </div>
+        <div class="card p-8 text-center">
+          <h3 class="text-2xl font-bold mb-2">Ready Team</h3>
+          <p class="text-gray-600">Experienced team for deployment, customization, and support.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="my-24 border-gray-200" />
+
+    <!-- Findings -->
+    <section id="findings" class="scroll-mt-24" aria-labelledby="findings-title">
+      <div class="text-center">
+        <h2 id="findings-title" class="text-4xl font-bold mb-4 text-gray-800">Key Findings</h2>
+        <p class="mx-auto max-w-3xl text-lg text-gray-600 mb-12">Primary conclusions to guide market entry strategy.</p>
+      </div>
+
+      <div class="mx-auto max-w-2xl card p-8">
+        <ul class="space-y-4">
+          <li class="flex items-start">
+            <span class="text-[color:var(--manafa)] mr-3 mt-1" aria-hidden="true">✔</span>
+            <div>
+              <h3 class="font-semibold text-lg">Market looks small if only targeting government funds</h3>
+              <p class="text-gray-600">Winning likely requires high share capture and/or expanding services over time.</p>
+            </div>
+          </li>
+          <li class="flex items-start">
+            <span class="text-[color:var(--manafa)] mr-3 mt-1" aria-hidden="true">✔</span>
+            <div>
+              <h3 class="font-semibold text-lg">Competitors offer broad financial platforms</h3>
+              <p class="text-gray-600">A new entrant must be best‑in‑class at origination or plan to broaden capabilities.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-gray-200 mt-24">
+    <div class="mx-auto max-w-7xl px-6 py-8 text-center text-gray-600">
+      <p>&copy; 2025 KSA LOP Analysis. Interactive report for discussion purposes.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const FONT_COLOR = getComputedStyle(document.documentElement).getPropertyValue('--ink') || '#212529';
+      Chart.defaults.color = FONT_COLOR.trim();
+      Chart.defaults.font.family = 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial';
+
+      // Timeline data & render
+      const timelineData = [
+        { stage: '1. Borrower Onboarding', what: 'Applicant submits information & documents.', role: 'Digital forms, pre-filled from gov/credit APIs.' },
+        { stage: '2. KYC & Data Verification', what: 'Verify identity, company registry.', role: 'Integration with national ID, CR, credit bureau.' },
+        { stage: '3. Application Scoring', what: 'Evaluate financial, operational, sectoral risks.', role: 'AI/scorecards, historical repayment analysis.' },
+        { stage: '4. Credit Decisioning', what: 'Credit officer & committee approval.', role: 'Workflow automation, voting modules, audit logs.' },
+        { stage: '5. Documentation & Contracting', what: 'Draft and sign loan contracts.', role: 'E-signature, Shariah templates, document management.' },
+        { stage: '6. Disbursement', what: 'Funds released in tranches or lump sum.', role: 'Links to treasury systems, milestone triggers.' },
+        { stage: '7. Post-Loan Monitoring', what: 'Ongoing performance tracking.', role: 'Covenant checks, payment alerts, early warning systems.' }
+      ];
+
+      const timeline = document.getElementById('timeline');
+      timelineData.forEach(item => {
+        const wrap = document.createElement('div');
+        wrap.className = 'relative card p-6 ml-8 pl-8';
+        const dot = document.createElement('span');
+        dot.className = 'timeline-dot';
+        dot.setAttribute('aria-hidden', 'true');
+        wrap.appendChild(dot);
+        wrap.innerHTML += `
+          <h3 class="font-bold text-xl mb-2">${item.stage}</h3>
+          <p class="text-gray-700"><span class="font-semibold text-gray-800">What happens:</span> ${item.what}</p>
+          <p class="text-gray-700"><span class="font-semibold text-gray-800">Platform role:</span> ${item.role}</p>
+        `;
+        timeline.appendChild(wrap);
+      });
+
+      // Financial model
+      const els = {
+        sliders: {
+          clients: document.getElementById('clientsSlider'),
+          baseLicense: document.getElementById('baseLicenseSlider'),
+          adminFee: document.getElementById('adminFeeSlider'),
+          subscription: document.getElementById('subscriptionSlider'),
+          adminUsers: document.getElementById('adminUsersSlider'),
+          apiFee: document.getElementById('apiFeeSlider'),
+          customizationFee: document.getElementById('customizationFeeSlider')
+        },
+        values: {
+          clients: document.getElementById('clientsCount'),
+          baseLicense: document.getElementById('baseLicenseValue'),
+          adminFee: document.getElementById('adminFeeValue'),
+          subscription: document.getElementById('subscriptionValue'),
+          adminUsers: document.getElementById('adminUsersValue'),
+          apiFee: document.getElementById('apiFeeValue'),
+          customizationFee: document.getElementById('customizationFeeValue')
+        },
+        outputs: {
+          firstYear: document.getElementById('firstYearRevenue'),
+          recurring: document.getElementById('recurringRevenue')
+        }
+      };
+
+      const constants = { implementationSetup: 350000, dataMigration: 150000, training: 50000, apiRequests: 1 };
+
+      const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+      const revenueChart = new Chart(revenueCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Total One-Time Revenue', 'Total Recurring Revenue'],
+          datasets: [{
+            label: 'Revenue (SAR)',
+            data: [0, 0],
+            backgroundColor: ['#00635d', '#00a59a'],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: { display: true, text: 'Revenue (SAR)' },
+              ticks: { callback: v => (v / 1_000_000) + 'M' }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => new Intl.NumberFormat('en-SA', { style: 'currency', currency: 'SAR', maximumFractionDigits: 0 }).format(ctx.parsed.y)
+              }
+            }
+          }
+        }
+      });
+
+      const formatNumber = v => new Intl.NumberFormat('en-US').format(v);
+
+      function recalc() {
+        const clients = +els.sliders.clients.value;
+        const baseLicense = +els.sliders.baseLicense.value;
+        const adminFee = +els.sliders.adminFee.value;
+        const subscriptionRate = +els.sliders.subscription.value / 100;
+        const adminUsers = +els.sliders.adminUsers.value;
+        const apiFee = +els.sliders.apiFee.value;
+        const customizationFee = +els.sliders.customizationFee.value;
+
+        els.values.clients.textContent = clients;
+        els.values.baseLicense.textContent = formatNumber(baseLicense);
+        els.values.adminFee.textContent = formatNumber(adminFee);
+        els.values.subscription.textContent = Math.round(subscriptionRate * 100);
+        els.values.adminUsers.textContent = adminUsers;
+        els.values.apiFee.textContent = formatNumber(apiFee);
+        els.values.customizationFee.textContent = formatNumber(customizationFee);
+
+        const oneTimePerClient = baseLicense + constants.implementationSetup + constants.dataMigration + constants.training;
+        const recurringPerClient = (adminFee * adminUsers) + (apiFee * constants.apiRequests) + customizationFee + (baseLicense * subscriptionRate);
+
+        const totalOneTime = oneTimePerClient * clients;
+        const totalRecurring = recurringPerClient * clients;
+        const totalFirstYear = totalOneTime + totalRecurring;
+
+        els.outputs.firstYear.textContent = (totalFirstYear / 1_000_000).toFixed(2);
+        els.outputs.recurring.textContent = (totalRecurring / 1_000_000).toFixed(2);
+
+        revenueChart.data.datasets[0].data = [totalOneTime, totalRecurring];
+        revenueChart.update();
+      }
+
+      Object.values(els.sliders).forEach(s => s.addEventListener('input', recalc));
+      recalc();
+
+      // Active nav highlighting via IntersectionObserver (perf‑friendly)
+      const sections = Array.from(document.querySelectorAll('main section'));
+      const navLinks = Array.from(document.querySelectorAll('header a.nav-link'));
+      const linkFor = id => navLinks.find(a => a.getAttribute('href') === `#${id}`);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const link = linkFor(entry.target.id);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinks.forEach(a => a.setAttribute('aria-current', 'false'));
+            link.setAttribute('aria-current', 'true');
+          }
+        });
+      }, { rootMargin: '-40% 0px -50% 0px', threshold: 0.01 });
+
+      sections.forEach(sec => observer.observe(sec));
+    });
+  </script>
+</body>
+</html>
